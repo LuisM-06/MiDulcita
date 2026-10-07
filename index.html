@@ -259,9 +259,14 @@
       transform:translateY(24px);
     }
 
-    .gift-content.open{
+    .gift-content.open,
+    .gift-content:target{
       display:block;
       animation:giftReveal .9s ease forwards;
+    }
+
+    .gift-content:target ~ footer{
+      display:block !important;
     }
 
     @keyframes giftReveal{
@@ -294,7 +299,7 @@
       Hoy 7 de octubre, quiero recordarte que vives en mi mente y en mi corazón,
       pienso en ti, en todo momento, y en cada segundo, eres mi todo, mi monita linda.
     </p>
-    <button class="btn" onclick="openGift()">Para mi amorcito 💌</button>
+    <a class="btn" href="#giftContent">Para mi amorcito 💌</a>
   </section>
 
   <div id="giftContent" class="gift-content">
@@ -391,24 +396,6 @@
   </footer>
 
 <script>
-  function openGift(){
-    const content = document.getElementById("giftContent");
-    const footer = document.getElementById("footer");
-
-    content.classList.add("open");
-    footer.style.display = "block";
-
-    setTimeout(() => {
-      document.getElementById("carta").scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }, 250);
-
-    for(let i=0;i<14;i++){
-      setTimeout(createHeart, i*90);
-    }
-  }
 
   // Contador desde el 7 de enero de 2025
   const startDate = new Date(2025, 0, 7, 0, 0, 0);

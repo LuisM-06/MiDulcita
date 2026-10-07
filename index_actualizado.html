@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para mi Dulcita 💗</title>
+  <style>
+    :root{
+      --rosa:#ff7ca8;
+      --rosa2:#ffb3ca;
+      --crema:#fff8fb;
+      --vino:#8f3656;
+      --texto:#5f3444;
+      --blanco:#ffffff;
+    }
+
+    *{box-sizing:border-box; scroll-behavior:smooth;}
+
+    body{
+      margin:0;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color:var(--texto);
+      background:
+        radial-gradient(circle at top left, #ffe2ec 0, transparent 35%),
+        radial-gradient(circle at bottom right, #ffd5e4 0, transparent 35%),
+        linear-gradient(135deg,#fff7fa,#ffe8f0);
+      overflow-x:hidden;
+    }
+
+    .hearts{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+      overflow:hidden;
+    }
+
+    .heart{
+      position:absolute;
+      bottom:-40px;
+      font-size:24px;
+      opacity:.55;
+      animation:floatUp linear infinite;
+    }
+
+    @keyframes floatUp{
+      0%{transform:translateY(0) rotate(0deg); opacity:0;}
+      10%{opacity:.55;}
+      100%{transform:translateY(-115vh) rotate(360deg); opacity:0;}
+    }
+
+    section{
+      position:relative;
+      z-index:2;
+      padding:70px 20px;
+      max-width:1000px;
+      margin:auto;
+    }
+
+    .hero{
+      min-height:100vh;
+      max-width:none;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:40px 22px;
+    }
+
+    .mini{
+      font-size:1rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#b85d7c;
+      margin-bottom:10px;
+    }
+
+    h1{
+      font-size:clamp(2.6rem,8vw,5.5rem);
+      margin:0;
+      color:#d74f7d;
+      text-shadow:0 4px 20px rgba(215,79,125,.18);
+    }
+
+    .subtitle{
+      max-width:680px;
+      font-size:clamp(1.05rem,3vw,1.35rem);
+      line-height:1.7;
+      margin:22px auto 0;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:28px;
+      padding:15px 24px;
+      border:none;
+      border-radius:999px;
+      background:linear-gradient(135deg,#ff6f9f,#ff95b9);
+      color:white;
+      font-size:1rem;
+      font-weight:bold;
+      cursor:pointer;
+      text-decoration:none;
+      box-shadow:0 10px 30px rgba(218,69,119,.25);
+      transition:.2s ease;
+    }
+
+    .btn:hover{transform:translateY(-2px) scale(1.02);}
+
+    .card{
+      background:rgba(255,255,255,.78);
+      backdrop-filter:blur(8px);
+      border:1px solid rgba(255,255,255,.9);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:0 15px 45px rgba(154,71,103,.12);
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:clamp(2rem,6vw,3.2rem);
+      color:#d74f7d;
+      margin:0 0 28px;
+    }
+
+    .letter{
+      max-width:760px;
+      margin:auto;
+      font-size:1.08rem;
+      line-height:1.9;
+      text-align:left;
+    }
+
+    .counter{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .counter-box{
+      background:#fff;
+      border-radius:22px;
+      padding:22px 10px;
+      text-align:center;
+      box-shadow:0 8px 25px rgba(187,74,113,.10);
+    }
+
+    .counter-box strong{
+      display:block;
+      font-size:2rem;
+      color:#d74f7d;
+    }
+
+    .reasons{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .reason{
+      background:#fff;
+      border-radius:24px;
+      padding:26px 20px;
+      text-align:center;
+      box-shadow:0 10px 28px rgba(176,71,107,.10);
+      transition:.2s;
+    }
+
+    .reason:hover{transform:translateY(-4px);}
+    .reason .emoji{font-size:2rem; display:block; margin-bottom:12px;}
+
+    .photos{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .photo{
+      min-height:260px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#ffd6e4,#fff);
+      border:10px solid #fff;
+      box-shadow:0 10px 28px rgba(169,68,103,.14);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      color:#a75370;
+      transform:rotate(-1.5deg);
+    }
+
+
+    .photo{
+      padding:0;
+      overflow:hidden;
+      min-height:0;
+      aspect-ratio:4/3;
+    }
+
+    .photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:14px;
+    }
+
+    .photo:nth-child(2){transform:rotate(1.5deg);}
+    .photo:nth-child(3){transform:rotate(-.8deg);}
+
+    .final{
+      text-align:center;
+      min-height:70vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+    }
+
+    .hidden-message{
+      max-height:0;
+      overflow:hidden;
+      opacity:0;
+      transition:.7s ease;
+      max-width:700px;
+      margin:auto;
+    }
+
+    .hidden-message.show{
+      max-height:500px;
+      opacity:1;
+      margin-top:25px;
+    }
+
+    .big-heart{
+      font-size:5rem;
+      animation:pulse 1.3s infinite;
+    }
+
+    @keyframes pulse{
+      50%{transform:scale(1.13);}
+    }
+
+    footer{
+      text-align:center;
+      padding:35px 20px 55px;
+      position:relative;
+      z-index:2;
+      color:#9a5870;
+    }
+
+
+    .gift-content{
+      display:none;
+      opacity:0;
+      transform:translateY(24px);
+    }
+
+    .gift-content.open,
+    .gift-content:target{
+      display:block;
+      animation:giftReveal .9s ease forwards;
+    }
+
+    .gift-content:target ~ footer{
+      display:block !important;
+    }
+
+    @keyframes giftReveal{
+      from{
+        opacity:0;
+        transform:translateY(24px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media (max-width:760px){
+      .counter{grid-template-columns:repeat(2,1fr);}
+      .reasons{grid-template-columns:1fr;}
+      .photos{grid-template-columns:1fr;}
+      section{padding:55px 16px;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hearts" id="hearts"></div>
+
+  <section class="hero">
+    <div class="mini">7 de octubre de 2026 💕</div>
+    <h1>Feliz 21 cumplemes,<br>mi Dulcita 💗</h1>
+    <p class="subtitle">
+      Hoy 7 de octubre, quiero recordarte que vives en mi mente y en mi corazón,
+      pienso en ti, en todo momento, y en cada segundo, eres mi todo, mi monita linda.
+    </p>
+    <a class="btn" href="#giftContent">Para mi amorcito 💌</a>
+  </section>
+
+  <div id="giftContent" class="gift-content">
+  <section id="carta">
+    <h2 class="section-title">Para ti, mi Dulcita 💕</h2>
+    <div class="card letter">
+      <p>
+        Mi niña hermosa:
+      </p>
+      <p>
+        Este 7 de octubre es un día muy especial, ya que cumplimos otro mes como novios,
+        otro mes en el que nos amamos con mucha intensidad.
+      </p>
+      <p>
+        Quiero decirte que eres una mujer increíble. Es fácil para mí confundirme, ya que
+        muchas veces siento que estoy en un sueño, en un sueño increíble y hermoso, porque
+        mi novia es la mujer más bella e increíble del mundo entero.
+      </p>
+      <p>
+        Para mi sorpresa y alegría, no es un sueño, es una maravillosa realidad, ya que tengo
+        a mi lado a una princesita, la cual me enamora cada día de mi vida.
+      </p>
+      <p>
+        Te amo muchísimo, mi princesa, con toda mi alma y todo mi ser. ❤️
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Nuestro tiempo juntos ⏳💗</h2>
+    <div class="card">
+      <p style="text-align:center; margin-top:0;">
+        Desde el <strong>7 de enero de 2025</strong> han pasado...
+      </p>
+      <noscript><p style="text-align:center;color:#b85d7c;"><strong>Nota:</strong> abre esta página directamente en Safari o Chrome para ver el contador en tiempo real.</p></noscript>
+      <div class="counter">
+        <div class="counter-box"><strong id="days">638</strong>días</div>
+        <div class="counter-box"><strong id="hours">0</strong>horas</div>
+        <div class="counter-box"><strong id="minutes">0</strong>minutos</div>
+        <div class="counter-box"><strong id="seconds">0</strong>segundos</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Cosas que amo de ti 🥹💕</h2>
+    <div class="reasons">
+      <div class="reason">
+        <span class="emoji">😊</span>
+        <strong>Tu sonrisa</strong>
+        <p>Porque es tan hermosa que me alegra hasta el día más pesado.</p>
+      </div>
+      <div class="reason">
+        <span class="emoji">🫶</span>
+        <strong>Tu forma de ser</strong>
+        <p>Porque es única e inigualable, me encanta.</p>
+      </div>
+      <div class="reason">
+        <span class="emoji">🧸</span>
+        <strong>Cómo me haces sentir</strong>
+        <p>Amado, acompañado y la persona más feliz del mundo.</p>
+      </div>
+      <div class="reason">
+        <span class="emoji">😂</span>
+        <strong>Nuestras risas</strong>
+        <p>Porque contigo hasta los momentos más simples terminan siendo recuerdos bonitos.</p>
+      </div>
+      <div class="reason">
+        <span class="emoji">💌</span>
+        <strong>Nuestros momentos</strong>
+        <p>Porque el tiempo se detiene a tu lado, cada segundo es hermoso.</p>
+      </div>
+      <div class="reason">
+        <span class="emoji">❤️</span>
+        <strong>Simplemente tú</strong>
+        <p>Porque eres perfecta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Nuestras Fotitos 📸💞</h2>
+    <div class="photos">
+      <div class="photo"><img src="foto1.jpeg" alt="Nuestra foto 1"></div>
+      <div class="photo"><img src="foto2.jpeg" alt="Nuestra foto 2"></div>
+      <div class="photo"><img src="foto3.jpeg" alt="Nuestra foto 3"></div>
+    </div>
+  </section>
+</div>
+
+  <footer id="footer" style="display:none;">
+    Hecho con mucho amor para mi Dulcita 💗<br>
+    De LP<br>
+    07·01·2025 ∞
+  </footer>
+
+<script>
+
+  // Contador desde el 7 de enero de 2025
+  const startDate = new Date(2025, 0, 7, 0, 0, 0);
+
+  function updateCounter(){
+    const now = new Date();
+    const totalMilliseconds = now.getTime() - startDate.getTime();
+
+    if (!Number.isFinite(totalMilliseconds) || totalMilliseconds < 0) return;
+
+    const totalSeconds = Math.floor(totalMilliseconds / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+  }
+
+  updateCounter();
+  setInterval(updateCounter,1000);
+
+  // Corazones flotantes
+  const heartsContainer = document.getElementById("hearts");
+  const heartIcons = ["💗","💕","💖","💞","❤️","🌸"];
+
+  function createHeart(){
+    const el = document.createElement("span");
+    el.className = "heart";
+    el.textContent = heartIcons[Math.floor(Math.random()*heartIcons.length)];
+    el.style.left = Math.random()*100 + "vw";
+    el.style.fontSize = (16 + Math.random()*22) + "px";
+    el.style.animationDuration = (7 + Math.random()*8) + "s";
+    heartsContainer.appendChild(el);
+    setTimeout(()=>el.remove(),16000);
+  }
+
+  setInterval(createHeart,700);
+</script>
+</body>
+</html>

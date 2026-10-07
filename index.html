@@ -192,6 +192,22 @@
       transform:rotate(-1.5deg);
     }
 
+
+    .photo{
+      padding:0;
+      overflow:hidden;
+      min-height:0;
+      aspect-ratio:4/3;
+    }
+
+    .photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:14px;
+    }
+
     .photo:nth-child(2){transform:rotate(1.5deg);}
     .photo:nth-child(3){transform:rotate(-.8deg);}
 
@@ -236,6 +252,29 @@
       color:#9a5870;
     }
 
+
+    .gift-content{
+      display:none;
+      opacity:0;
+      transform:translateY(24px);
+    }
+
+    .gift-content.open{
+      display:block;
+      animation:giftReveal .9s ease forwards;
+    }
+
+    @keyframes giftReveal{
+      from{
+        opacity:0;
+        transform:translateY(24px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
     @media (max-width:760px){
       .counter{grid-template-columns:repeat(2,1fr);}
       .reasons{grid-template-columns:1fr;}
@@ -252,32 +291,34 @@
     <div class="mini">7 de octubre de 2026 💕</div>
     <h1>Feliz 21 cumplemes,<br>mi Dulcita 💗</h1>
     <p class="subtitle">
-      Desde aquel 7 de enero de 2025 comenzó una de las historias más bonitas de mi vida.
-      Hoy quiero recordarte, de una forma pequeñita pero hecha con mucho amor,
-      lo especial que eres para mí.
+      Hoy 7 de octubre, quiero recordarte que vives en mi mente y en mi corazón,
+      pienso en ti, en todo momento, y en cada segundo, eres mi todo, mi monita linda.
     </p>
-    <a class="btn" href="#carta">Abrir mi regalito 💌</a>
+    <button class="btn" onclick="openGift()">Para mi amorcito 💌</button>
   </section>
 
+  <div id="giftContent" class="gift-content">
   <section id="carta">
     <h2 class="section-title">Para ti, mi Dulcita 💕</h2>
     <div class="card letter">
       <p>
-        Mi Dulcita:
+        Mi niña hermosa:
       </p>
       <p>
-        Hoy cumplimos otro mes juntos y quería regalarte algo diferente, algo que pudieras
-        abrir y volver a ver cuando quisieras. Desde que llegaste a mi vida has llenado
-        muchos de mis días de alegría, cariño y recuerdos que guardo con muchísimo amor.
+        Este 7 de octubre es un día muy especial, ya que cumplimos otro mes como novios,
+        otro mes en el que nos amamos con mucha intensidad.
       </p>
       <p>
-        Gracias por cada risa, cada abrazo, cada conversación, cada momento bonito y también
-        por todos esos pequeños detalles que hacen que estar contigo sea tan especial.
-        Puede que esta página sea sencilla, pero cada palabra aquí está puesta pensando en ti.
+        Quiero decirte que eres una mujer increíble. Es fácil para mí confundirme, ya que
+        muchas veces siento que estoy en un sueño, en un sueño increíble y hermoso, porque
+        mi novia es la mujer más bella e increíble del mundo entero.
       </p>
       <p>
-        Espero que sigamos sumando muchos meses, aventuras, fotografías, abrazos y recuerdos.
-        Te quiero muchísimo, mi Dulcita. ❤️
+        Para mi sorpresa y alegría, no es un sueño, es una maravillosa realidad, ya que tengo
+        a mi lado a una princesita, la cual me enamora cada día de mi vida.
+      </p>
+      <p>
+        Te amo muchísimo, mi princesa, con toda mi alma y todo mi ser. ❤️
       </p>
     </div>
   </section>
@@ -288,8 +329,9 @@
       <p style="text-align:center; margin-top:0;">
         Desde el <strong>7 de enero de 2025</strong> han pasado...
       </p>
+      <noscript><p style="text-align:center;color:#b85d7c;"><strong>Nota:</strong> abre esta página directamente en Safari o Chrome para ver el contador en tiempo real.</p></noscript>
       <div class="counter">
-        <div class="counter-box"><strong id="days">0</strong>días</div>
+        <div class="counter-box"><strong id="days">638</strong>días</div>
         <div class="counter-box"><strong id="hours">0</strong>horas</div>
         <div class="counter-box"><strong id="minutes">0</strong>minutos</div>
         <div class="counter-box"><strong id="seconds">0</strong>segundos</div>
@@ -334,53 +376,54 @@
   </section>
 
   <section>
-    <h2 class="section-title">Nuestros recuerditos 📸💞</h2>
+    <h2 class="section-title">Nuestras Fotitos 📸💞</h2>
     <div class="photos">
-      <div class="photo">📷<br><br>Aquí podemos poner una foto bonita de ustedes.</div>
-      <div class="photo">💗<br><br>Aquí otra de sus fotos favoritas.</div>
-      <div class="photo">🥰<br><br>Y aquí otro recuerdo especial.</div>
+      <div class="photo"><img src="foto1.jpeg" alt="Nuestra foto 1"></div>
+      <div class="photo"><img src="foto2.jpeg" alt="Nuestra foto 2"></div>
+      <div class="photo"><img src="foto3.jpeg" alt="Nuestra foto 3"></div>
     </div>
   </section>
+</div>
 
-  <section class="final">
-    <div class="big-heart">💗</div>
-    <h2 class="section-title" style="margin-bottom:5px;">Tengo una última cosita para ti...</h2>
-    <button class="btn" onclick="showSurprise()">Presiona aquí, mi Dulcita ❤️</button>
-
-    <div class="hidden-message card" id="surprise">
-      <h3 style="font-size:1.8rem;color:#d74f7d;">Te elegiría otra vez. 💕</h3>
-      <p style="font-size:1.1rem;line-height:1.8;">
-        Si pudiera volver al 7 de enero de 2025 sabiendo todo lo que viviríamos,
-        volvería a elegir estar contigo. Gracias por estos 21 meses, mi Dulcita.
-        Espero que esto sea solo una pequeñita parte de todo lo que todavía nos falta por vivir juntos.
-      </p>
-      <p style="font-size:1.4rem;"><strong>Te quiero muchísimo. ❤️</strong></p>
-    </div>
-  </section>
-
-  <footer>
+  <footer id="footer" style="display:none;">
     Hecho con mucho amor para mi Dulcita 💗<br>
     07·01·2025 ∞
   </footer>
 
 <script>
+  function openGift(){
+    const content = document.getElementById("giftContent");
+    const footer = document.getElementById("footer");
+
+    content.classList.add("open");
+    footer.style.display = "block";
+
+    setTimeout(() => {
+      document.getElementById("carta").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }, 250);
+
+    for(let i=0;i<14;i++){
+      setTimeout(createHeart, i*90);
+    }
+  }
+
   // Contador desde el 7 de enero de 2025
-  const startDate = new Date("2025-01-07T00:00:00");
+  const startDate = new Date(2025, 0, 7, 0, 0, 0);
 
   function updateCounter(){
     const now = new Date();
-    let diff = now - startDate;
+    const totalMilliseconds = now.getTime() - startDate.getTime();
 
-    const days = Math.floor(diff / (1000*60*60*24));
-    diff %= (1000*60*60*24);
+    if (!Number.isFinite(totalMilliseconds) || totalMilliseconds < 0) return;
 
-    const hours = Math.floor(diff / (1000*60*60));
-    diff %= (1000*60*60);
-
-    const minutes = Math.floor(diff / (1000*60));
-    diff %= (1000*60);
-
-    const seconds = Math.floor(diff / 1000);
+    const totalSeconds = Math.floor(totalMilliseconds / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
 
     document.getElementById("days").textContent = days;
     document.getElementById("hours").textContent = hours;
@@ -407,12 +450,6 @@
   }
 
   setInterval(createHeart,700);
-
-  function showSurprise(){
-    document.getElementById("surprise").classList.add("show");
-    for(let i=0;i<18;i++){
-      setTimeout(createHeart,i*80);
-    }
   }
 </script>
 </body>
